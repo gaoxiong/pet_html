@@ -1,0 +1,70 @@
+.petinfo_picture {
+  background: url('../img/info_header_bg.png') no-repeat 0px center;
+  background-size:100% 100%;
+  text-align: center;
+}
+.round_img_small {
+	width:100px; 
+	height:100px; 
+	border-radius:50px; 
+	padding-top: 40px;
+	padding-bottom:10px;
+	padding-left:70px;
+}
+
+.info_name {
+  padding-bottom: 20px;
+}
+
+#pet_name {
+  color: white;
+}
+
+.add_another_info {
+  float: right;
+  padding-right: 50px;
+  padding-top: 80px;
+}
+
+.petinfo_details {
+  background: white;
+  height: 100px;
+}
+
+.petinfo_details_info {
+  float:left;
+  width: 40%;
+  height: 20px;
+  padding: 8px;
+}
+
+.petinfo_training_details {
+  margin-top: 3px;
+  background-color: white;
+}
+
+.training_history {
+  float: left;
+  margin-left: 8px;
+  background-color: #75C8A9;
+  padding: 5px;
+  color: white;
+}
+
+.training_uint {
+  clear: both;
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.clock_img {
+  float: left
+  width: 22px;
+  height: 22px;
+}
+
+.training_go {
+  background-color: #4A90E2;
+  padding: 5px;
+  color: white;
+}

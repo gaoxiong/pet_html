@@ -1,0 +1,47 @@
+.course, .detail_step {
+  background-color: white;
+  margin-bottom: 2px;
+  padding-left: 4px;
+}
+
+.course_title {
+  padding-top: 5px;
+}
+
+.course_title span{
+  font-size: 16px;
+  padding: 5px;
+}
+
+.course_desc, .course {
+  margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom:5px;
+}
+
+.detail_step_title {
+  padding: 5px;
+}
+
+.detail_step_title span {
+  padding: 5px;
+  background-color: #4A90E2;
+  color: white;
+}
+
+.detail_step_desc {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom:5px;
+}
+
+#float_div {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+#float_img {
+  width: 60px;
+  height: 60px;
+}

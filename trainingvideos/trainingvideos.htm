@@ -1,12 +1,40 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/trainingvideos.js"></script>
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+<link href="../css/trainingvideos.css" rel="stylesheet" type="text/css">
+<title>训练教程</title>
+</head>
 <body>
-	<div class="training">
-		<div>
-			<video src="" id="training_video" class="training_vide" />
-		</div>
-		<div>
-			<span id="training_info"></span>
-		</div>
+	<div class="training_header" id="training_header">
+	<table>
+	<tr>
+	<td><img class="pet_header_img" src="../img/pet_header.png">
+	<td><div class="add_pet_info">请先添加您的宠物基本信息</div><div class="div_add_pet" onclick="gotourl('./add_pet_info.htm')";>添加</div>
+	</td>
+	</table>
 	</div>
+	<div id="training_tour">
+	</div>
+
+	<script>
+	
+
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return unescape(r[2]); return null;
+    }
+		userid = getQueryString('userid');
+		if (userid!==null)
+		{
+			geneateText = "<img class='img_training_header' src='../img/slice.png'>"
+			$('#training_header').html(geneateText);
+		}
+	</script>
 </body>
 </html>

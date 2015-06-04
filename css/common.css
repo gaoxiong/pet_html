@@ -1,0 +1,13 @@
+* {
+  font-size: 13px;
+  color: gray;
+}
+
+body {
+  background-color: #E8EDEE;
+  font-family: "Microsoft YaHei";
+}
+
+.clear_div {
+  clear: both;
+}

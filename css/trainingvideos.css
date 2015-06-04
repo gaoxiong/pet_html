@@ -1,0 +1,102 @@
+.training_unit {
+  background-color: white;
+  margin-top:2px;
+  padding: 10px;
+}
+
+.trainig_title {
+  float: left;
+  padding: 5px;
+  color: white;
+  background-color: #75C8A9
+}
+
+.trainig_reward {
+  float: right;
+}
+
+.reward_img {
+  width: 20px;
+  height: 20px;
+}
+
+.trainig_level {
+  float: right;
+  padding: 5px;
+}
+.trainig_desc {
+  clear: both;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.training_course {
+  float: left;
+  width: 42%;
+  margin: 3px;
+  color: #F94435;
+  padding: 5px;
+  background-color: #E8EDEE;
+}
+
+.pet_header_img {
+  width: 100px;
+  height: 100px;
+}
+
+.add_pet_info {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.div_add_pet {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.add_pet_info {
+  width: 90%;
+}
+
+.div_add_pet {
+  padding: 5px;
+  width: 40px;
+  background-color:#4A90E2;
+  color: white;
+  text-align:center;
+  margin-left:10px;
+}
+#add_pet_btn {
+}
+
+#add_pet_info_click_ok {
+  margin-left: 10px;
+  padding: 10px;
+  color: white;
+  background-color:#4A90E2;
+  width: 40%;
+  float:left;
+  text-align: center;
+  font-size:16px
+}
+#add_pet_info_click_cancel {
+  margin-left: 10px;
+  padding: 10px;
+  color: white;
+  background-color:#4A90E2;
+  width: 40%;
+  float:left;
+  text-align: center;
+  font-size:16px
+}
+
+#add_pet_info_click_ok_a {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+.img_training_header { 
+  width: 98%;
+}

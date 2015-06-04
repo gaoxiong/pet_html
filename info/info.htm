@@ -1,14 +1,39 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/petinfo.js"></script>
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+<link href="../css/petinfo.css" rel="stylesheet" type="text/css">
+<title>爱宠信息</title>
+</head>
 <body>
 	<div class="petinfo_picture">
-		<div>
-			<img src="" id="pet_header" class="head_portrait" />
+		<div class="add_another_info">
+			<img src="../img/plus.png" class="plus_image" />
 		</div>
 		<div>
-			<span id="pet_name"></span>
+			<img src="../img/header.png" id="pet_header" class="round_img_small" />
+		</div>
+		<div class="info_name">
+			<span id="pet_name">副总</span>
 		</div>
 	</div>
 	<div class="petinfo_details">
+	  <div class="petinfo_details_info">年龄：2个月</div>
+	  <div class="petinfo_details_info">生日：2000年5月20日</div>
+	  <div class="petinfo_details_info">狗种：沙皮狗</div>
+	  <div class="petinfo_details_info">性别：女</div>
+	  <div class="petinfo_details_info">等级：Level 1</div>
+	  <div class="petinfo_details_info">技能指数：5</div>
+	</div>
+	<div class="petinfo_training_details">
+	  <div class="training_history">
+	    <span>训练历史</span>
+      </div>
+	  <div id="training_history_module">
+	  </div>
 	</div>
 </body>
 </html>

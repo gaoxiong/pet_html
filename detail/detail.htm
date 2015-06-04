@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/detail.js"></script>
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+<link href="../css/detail.css" rel="stylesheet" type="text/css">
+<title>训练课程</title>
+<script type='text/javascript'>
+
+		
+     $(function(){
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return unescape(r[2]); return null;
+    }
+		id = getQueryString('courseId');
+	         $.ajax({
+	             type:'get',
+	             async:false,
+	             url:"http://100.64.82.199:8080/app/course/detail?userId=4&courseId="+id,
+	             dataType:'jsonp',
+	             jsonp:'jsonpcallback',
+	             jsonpCallback:"success_jsonpCallback",
+	             success:function(result){
+				 course = result.course;
+				 items = result.item;
+				 generateText = "<div class='detail_video'><video width=100% src='"+course.videoLoc+"' controls='controls' class='detail_video_delf'></video></div>";
+				 generateText += "<div class='course'><div class='course_title'><b><span>"+course.title+"</span></b></div>";
+				 generateText += "<div class='course_desc'><text class='course_desc_text'>"+course.desc+"</span></div></div>";
+				 for (i=0; i<items.length; i++)
+				 {
+					 generateText += "<div class='detail_step'>";
+					 generateText += "<div class='detail_step_title'><span class='detail_step_title_text'>第 " + items[i].step + " 步</span></div>";
+					 generateText += "<div class='detail_step_desc'><text class='detail_step_desc_text'>"+items[i].text+"</span></div></div>";
+					 generateText += "</div>";
+					 				 }
+					 				$("#detail_training").html(generateText);
+
+									completed = result.complete;
+									if (completed === false)
+									{
+										generateText = "<img id='float_img' src='../img/done.png' />";
+									} else {
+										generateText = "<img id='float_img' src='../img/cup.png' />";
+									}
+					 				    $("#float_div").html(generateText);
+					 	             },
+					 			 error:function(XMLHttpRequest, textStatus, errorThrown) {
+					 				 alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
+					 			 }
+					 	         });
+					 	});
+</script>
+</head>
+<body>
+	<div id="detail_training">
+	</div>
+	<div id="float_div">
+	<img id="float_img" src='../img/done.png' />
+	</div>
+</body>
+</html>
