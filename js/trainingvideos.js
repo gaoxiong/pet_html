@@ -1,9 +1,11 @@
 
+//http_host="http://100.64.82.199:8080";
+http_host="http://100.64.73.18:8080";
 	$(function(){
          $.ajax({
              type:'get',
              async:false,
-             url:"http://100.64.82.199:8080/app/tutorial/list",
+             url:http_host+"/app/tutorial/list",
              dataType:'jsonp',
              jsonp:'jsonpcallback',
              jsonpCallback:"success_jsonpCallback",
@@ -31,7 +33,7 @@
          $.ajax({
              type:'get',
              async:false,
-             url:"http://100.64.82.199:8080/app/course/list?tutorialId="+level,
+             url: http_host + "/app/course/list?tutorialId="+level,
              dataType:'jsonp',
              jsonp:'jsonpcallback',
              jsonpCallback:"success_jsonpCallback",
@@ -41,7 +43,7 @@
                 for (i = 0; i < result.length; i++)
                 {
 					j = j+1;
-					generateText += "<div id='course_unit_"+result[i].id+"' class='training_course'>" + j + ". " + result[i].title;
+					generateText += "<div id='course_unit_"+result[i].id+"' class='training_course' onclick='gotourl("+result[i].id+")'>" + j + ". " + result[i].title;
 					generateText += "</div>";
                 }
 				generateText += "<div class='clear_div'></div>"
@@ -50,15 +52,19 @@
              }
          });
      };
+
+	 function gotourl(id) {
+		 document.location.href="../detail/detail.htm?courseId=" +id;
+	 }
 		
      $("#b02").click(function(){
-		 alert("pets://training_details");
+		 //alert("pets://training_details");
 	 });
      $("#b01").click(function(){
          $.ajax({
              type:'get',//jquey是不支持post方式跨域的
              async:false,
-             url:"http://100.64.82.199:8080/app/login?mobile=13810426366",//跨域请求的URL
+             url:http_host+"/app/login?mobile=13810426366",//跨域请求的URL
              dataType:'jsonp',
              //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
              jsonp:'jsonpcallback',
@@ -66,7 +72,7 @@
              jsonpCallback:"success_jsonpCallback",
              //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
              success:function(result){
-                 alert(result.mobile);
+                 //alert(result.mobile);
              }
          });
      });

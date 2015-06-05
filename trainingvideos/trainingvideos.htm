@@ -14,7 +14,7 @@
 	<table>
 	<tr>
 	<td><img class="pet_header_img" src="../img/pet_header.png">
-	<td><div class="add_pet_info">请先添加您的宠物基本信息</div><div class="div_add_pet" onclick="gotourl('./add_pet_info.htm')";>添加</div>
+	<td><div class="add_pet_info">请先添加您的宠物基本信息</div><div class="div_add_pet" onclick="gotourl2('./add_pet_info.htm')";>添加</div>
 	</td>
 	</table>
 	</div>
@@ -22,6 +22,11 @@
 	</div>
 
 	<script>
+
+	
+	 function gotourl2(url) {
+		 document.location.href=url;
+	 }
 	
 
 	function getQueryString(name) {

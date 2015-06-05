@@ -9,50 +9,114 @@
 <title>训练课程</title>
 <script type='text/javascript'>
 
-		
+//http_host="http://100.64.82.199:8080";
+http_host="http://100.64.73.18:8080";
      $(function(){
-	function getQueryString(name) {
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-		var r = window.location.search.substr(1).match(reg);
-		if (r != null) return unescape(r[2]); return null;
-    }
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return unescape(r[2]); return null;
+		}
 		id = getQueryString('courseId');
-	         $.ajax({
-	             type:'get',
-	             async:false,
-	             url:"http://100.64.82.199:8080/app/course/detail?userId=4&courseId="+id,
-	             dataType:'jsonp',
-	             jsonp:'jsonpcallback',
-	             jsonpCallback:"success_jsonpCallback",
-	             success:function(result){
-				 course = result.course;
-				 items = result.item;
-				 generateText = "<div class='detail_video'><video width=100% src='"+course.videoLoc+"' controls='controls' class='detail_video_delf'></video></div>";
-				 generateText += "<div class='course'><div class='course_title'><b><span>"+course.title+"</span></b></div>";
-				 generateText += "<div class='course_desc'><text class='course_desc_text'>"+course.desc+"</span></div></div>";
-				 for (i=0; i<items.length; i++)
-				 {
-					 generateText += "<div class='detail_step'>";
-					 generateText += "<div class='detail_step_title'><span class='detail_step_title_text'>第 " + items[i].step + " 步</span></div>";
-					 generateText += "<div class='detail_step_desc'><text class='detail_step_desc_text'>"+items[i].text+"</span></div></div>";
-					 generateText += "</div>";
-					 				 }
-					 				$("#detail_training").html(generateText);
+		value=getQueryString('value');
+		if (value===0)
+		{
+		}
+		else if (value===1)
+		{
+			 $.ajax({
+				 type:'get',
+				 async:false,
+				 url:http_host+"/app/course/detail?userId=4&courseId="+id,
+				 dataType:'jsonp',
+				 jsonp:'jsonpcallback',
+				 jsonpCallback:"success_jsonpCallback"
+			 });
+		}
+		else if (value===null)
+		{
+			 $.ajax({
+				 type:'get',
+				 async:false,
+				 url:http_host+"/app/course/detail?userId=4&courseId="+id,
+				 dataType:'jsonp',
+				 jsonp:'jsonpcallback',
+				 jsonpCallback:"success_jsonpCallback",
+				 success:function(result){
+					 course = result.course;
+					 items = result.item;
+					 generateText = "<div class='detail_video'><video width=100% src='"+course.videoLoc+"' controls='controls' class='detail_video_delf' autoplay></video></div>";
+					 generateText += "<div class='course'><div class='course_title'><b><span>"+course.title+"</span></b></div>";
+					 generateText += "<div class='course_desc'><text class='course_desc_text'>"+course.desc+"</span></div></div>";
+					 for (i=0; i<items.length; i++)
+					 {
+						 generateText += "<div class='detail_step'>";
+						 generateText += "<div class='detail_step_title'><span class='detail_step_title_text'>第 " + items[i].step + " 步</span></div>";
+						 generateText += "<div class='detail_step_desc'><text class='detail_step_desc_text'>"+items[i].text+"</span></div></div>";
+						 generateText += "</div>";
+					 }
+					 $("#detail_training").html(generateText);
 
-									completed = result.complete;
-									if (completed === false)
-									{
-										generateText = "<img id='float_img' src='../img/done.png' />";
-									} else {
-										generateText = "<img id='float_img' src='../img/cup.png' />";
-									}
-					 				    $("#float_div").html(generateText);
-					 	             },
-					 			 error:function(XMLHttpRequest, textStatus, errorThrown) {
-					 				 alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
-					 			 }
-					 	         });
-					 	});
+					 completed = result.status;
+					 if (completed === 0)
+					 {
+						generateText = "<img id='float_img' src='../img/done.png' value='0' onclick='onImgClick(0,"+id+");'/>";
+					 } else if (completed === 1){
+						generateText = "<img id='float_img' src='../img/cup.png' value='1' onclick='onImgClick(1,"+id+");'/>";
+					 } else {
+						generateText = "<img id='float_img' src='../img/camera.png' value='2' onclick='onImgClick(2,"+id+");'/>";
+					 }
+					 $("#float_div").html(generateText);
+				 },
+				 error:function(XMLHttpRequest, textStatus, errorThrown) {
+					//alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
+				 }
+			 });
+		}
+	});
+	function onImgClick(value, id) {
+		url=document.location.href;
+		if (value===2)
+		{
+			alert("pets://camera/achievement");
+			return;
+		}
+		else if (value === 0)
+		{
+			 $.ajax({
+				 type:'get',
+				 async:false,
+				 url:http_host+"/app/user/achievement/start?userId=4&courseId="+id,
+				 dataType:'jsonp',
+				 jsonp:'jsonpcallback',
+				 jsonpCallback:"success_jsonpCallback"
+			 });
+			 value+=1;
+		}
+		else if (value === 1)
+		{
+			 $.ajax({
+				 type:'get',
+				 async:false,
+				 url:http_host+"/app/user/achievement/complete?userId=4&courseId="+id,
+				 dataType:'jsonp',
+				 jsonp:'jsonpcallback',
+				 jsonpCallback:"success_jsonpCallback"
+			 });
+			 value+=1;
+		};
+		 if (value === 0)
+		 {
+			generateText = "<img id='float_img' src='../img/done.png' value='0' onclick='onImgClick(0,"+id+");'/>";
+		 } else if (value === 1){
+			generateText = "<img id='float_img' src='../img/cup.png' value='1' onclick='onImgClick(1,"+id+");'/>";
+		 } else {
+			generateText = "<img id='float_img' src='../img/camera.png' value='2' onclick='onImgClick(2,"+id+");'/>";
+		 }
+		 $("#float_div").html(generateText);
+		//document.location.href=url;
+	}
+						
 </script>
 </head>
 <body>

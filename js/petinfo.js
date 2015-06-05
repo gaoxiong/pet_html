@@ -1,9 +1,10 @@
-
+//http_host="http://100.64.82.199:8080";
+http_host="http://100.64.73.18:8080";
 	$(function(){
          $.ajax({
              type:'get',
              async:false,
-             url:"http://100.64.82.199:8080/app/user/achievement/list?userId=4",
+             url:http_host+"/app/user/achievement/list?userId=4",
              dataType:'jsonp',
              jsonp:'jsonpcallback',
              jsonpCallback:"success_jsonpCallback",
@@ -30,4 +31,5 @@
 
 	function gotourl(courseId) {
 		document.location.href="../detail/detail.htm?courseId=" +courseId;
+		//document.location.reload();
 	}

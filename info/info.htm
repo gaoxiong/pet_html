@@ -7,11 +7,17 @@
 <link href="../css/common.css" rel="stylesheet" type="text/css">
 <link href="../css/petinfo.css" rel="stylesheet" type="text/css">
 <title>爱宠信息</title>
+
+	<script>
+	function reloadpage() {
+		document.location.reload();
+	}
+	</script>
 </head>
 <body>
 	<div class="petinfo_picture">
 		<div class="add_another_info">
-			<img src="../img/plus.png" class="plus_image" />
+			<img src="../img/plus.png" class="plus_image" onclick="reloadpage();" />
 		</div>
 		<div>
 			<img src="../img/header.png" id="pet_header" class="round_img_small" />
@@ -30,7 +36,7 @@
 	</div>
 	<div class="petinfo_training_details">
 	  <div class="training_history">
-	    <span>训练历史</span>
+	    <span class="training_history_text">训练历史</span>
       </div>
 	  <div id="training_history_module">
 	  </div>
